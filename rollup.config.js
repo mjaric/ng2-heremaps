@@ -1,7 +1,7 @@
 export default {
     input: 'dist/index.js',
     output: {
-        file: 'dist/bundles/ng-here-maps.umd.js',
+        file: 'dist/bundles/ng2-heremaps.umd.js',
         format: "cjs"
     },
     sourceMap: false,
