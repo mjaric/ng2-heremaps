@@ -1,0 +1,15 @@
+language: node_js
+sudo: false
+node_js:
+- 9.5.0
+install:
+- npm install
+script:
+- npm run build
+deploy:
+  provider: npm
+  email: milan.jaric@gmail.com
+  api_key: gh9wiJBT6dULIMbbkeVJUn0gdCWrSINqOV+DDuLIuo8uFWL2ZC+Gim81ziZ2JZziiBy9szVbQ0ztCEh+3UWXYWdUAKTSW8ZB0Yf9vRxptEtYOUaqZeNcJu+6VoY4V9/8cRQ++iN4/Ip2vruyrHqv2Knt5oO0taJVxoz+5Rnrdndf8JmvE1xQTqn/yce4McjkhLCraNE8Bkds9UPMFCPZph+L5dUIgwcOY6Lvjbw4b1+gumD78s4SEpzPzMBQw0fBjvLLtG5f8C7Y3uIPCmAoWQCi6rO9mzy4OJ5ToYDN+dB7WH2GXcPYYdWRkw1abn473a17H8hM3juYxqdWLOrH9bOWWzKk5P8TtEfB0jATc7Y5M2Cx65iCVGB3V9JbZa3JGVf3zfr/6+Ez4wwdilq/uocNlyimjqZA+pOnCmh4PzpMSqeORXlamTsrEvT4irfCpOUVROKZCDWqvnmaVWnnZBcdUZ0TwUlY/dzZYIF/j2hkRCQTSqVT6suruX3LDNpYicrhWwsIqzuTgFN7BY51pdiRZHwigoXvNWee2gf7BpC4YgEmPDbhcf5Q2BYmXYOVlphSrT5exXox+v1bpwWrfvJN1pyAOKmCWmm5GdxNxeRD02u1+dAoviaZAJiS2BNBwALA7Z7rGBUsoXRMq0ID/pS8PQ5iWsvoBZEZRGAC8K4=
+  on:
+    tags: true
+    repo: mjaric/ng-here-maps
