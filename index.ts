@@ -1,16 +1,17 @@
-import { LoaderOptions } from './src/loaders/loader-options.interface';
+import {LoaderOptions} from './src/loaders/loader-options.interface';
 import {
     LazyMapsApiLoader
 } from './src/loaders/lazy-maps-api-loader';
-import { APP_INITIALIZER, NgModule, ModuleWithProviders } from '@angular/core';
-import { MapsManager } from './src/services/maps-manager';
+import {APP_INITIALIZER, NgModule, ModuleWithProviders} from '@angular/core';
+import {MapsManager} from './src/services/maps-manager';
 import {BaseMapsApiLoader, LAZY_LOADER_OPTIONS} from './src/loaders/base-maps-api-loader';
-import { NoopMapsApiLoader } from './src/loaders/noop-maps-api-loader';
-import { MapComponent } from './src/directives/map';
-import { MapDirectionsDirective } from './src/directives/map-directions';
-import { MapMakerDirective } from './src/directives/map-marker';
-import { MapPolylineDirective } from './src/directives/map-polyline';
-export { LoaderOptions } from './src/loaders/loader-options.interface';
+import {NoopMapsApiLoader} from './src/loaders/noop-maps-api-loader';
+import {MapComponent} from './src/directives/map';
+import {MapDirectionsDirective} from './src/directives/map-directions';
+import {MapMakerDirective} from './src/directives/map-marker';
+import {MapPolylineDirective} from './src/directives/map-polyline';
+
+export {LoaderOptions} from './src/loaders/loader-options.interface';
 
 export {
     BaseMapComponent,
@@ -33,7 +34,8 @@ export {
     LatLng,
     GeoPoint,
     MarkerOptions,
-    PolylineOptions
+    PolylineOptions,
+    MapUIService
 } from './src/services';
 
 /**
@@ -106,7 +108,7 @@ export class HereMapsModule {
                     deps: [LazyMapsApiLoader],
                     multi: true
                 },
-                { provide: MapsManager, useClass: MapsManager }
+                {provide: MapsManager, useClass: MapsManager}
             ]
         };
     }

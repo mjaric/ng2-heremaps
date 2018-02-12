@@ -1,10 +1,9 @@
 export default {
-    input: 'dist/index.js',
-    output: {
-        file: 'dist/bundles/ng2-heremaps.umd.js',
-        format: "cjs"
-    },
+    entry: 'dist/index.js',
+    dest: 'dist/bundles/ng2-heremaps.umd.js',
     sourceMap: false,
+    format: 'umd',
+    moduleName: "ng.ng2-heremaps",
     globals: {
         '@angular/core': 'ng.core',
         'rxjs/Observable': 'Rx',

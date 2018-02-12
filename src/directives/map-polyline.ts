@@ -106,6 +106,7 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
                     .getMap()
                     .then((map) => {
                         map.removeObject(this.polyline);
+                        this.polyline.dispose();
                         delete this.polyline;
                     });
             });

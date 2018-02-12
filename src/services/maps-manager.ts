@@ -87,12 +87,18 @@ export class MapsManager {
     //         });
     // }
 
-    public createMap(el: HTMLElement, options?: H.Map.Options): Promise<H.Map> {
+    public createMap(el: HTMLElement, options?: H.Map.Options): Promise<{map: H.Map, ui: H.ui.UI, platform: H.service.Platform}> {
         return this.loader
             .platformReady
             .then(platform => {
                 let defaultLayers = platform.createDefaultLayers();
-                return new H.Map(el, defaultLayers.normal.map, options);
+                let map = new H.Map(el, defaultLayers.normal.map, options);
+                let ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
+                ui.setUnitSystem(H.ui.UnitSystem.IMPERIAL);
+                ui.removeControl('mapsettings');
+                let mapEvents = new H.mapevents.MapEvents(map);
+                let behaviour = new H.mapevents.Behavior(mapEvents);
+                return {map, ui, platform};
             });
     }
 
@@ -155,8 +161,8 @@ export class MapsManager {
                             bounds.mergePoint(m.getPosition());
                         } else {
                             bounds.mergePoint({
-                                lat: 'latitude' in m ? m.latitude : m.lat,
-                                lng: 'longitude' in m ? m.longitude : m.lng
+                                lat: m['latitude'] !== void(0) ? (<Coordinates>m).latitude : (<LatLng>m).lat,
+                                lng: m['longitude'] !== void(0) ? (<Coordinates>m).longitude : (<LatLng>m).lng
                             });
                         }
                     });

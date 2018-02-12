@@ -14,6 +14,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {MapsManager} from '../services/maps-manager';
 import {BaseMapComponent} from './base-map-component';
 import {LatLng} from '../interface/lat-lng';
+import {MapUIService} from '../services/map-ui.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ import {LatLng} from '../interface/lat-lng';
     template: `
         <div class="heremap-container" style="width: inherit; height: inherit"></div>
         <ng-content></ng-content>
-    `
+    `,
+    providers: [{provide: MapUIService, useClass: MapUIService}]
 })
 export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
     static counters = 0;
@@ -30,11 +32,14 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
     private _map: Promise<H.Map>;
     private _mapResolver: (map: H.Map) => void;
     private _mapBackgroundColor: string;
+    protected _uiResolver: (ui: H.ui.UI) => void;
 
     private _mapComponentsSubscriptions: Subscription;
 
     @ContentChildren(forwardRef(() => BaseMapComponent), {})
     public mapComponents: QueryList<BaseMapComponent<H.map.Object>>;
+
+    public readonly ui = new Promise<H.ui.UI>(resolve => this._uiResolver = resolve);
 
     /**
      * Should map auto resize bounds to current set of markers
@@ -192,8 +197,9 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
             .createMap(
                 this._elem.nativeElement.querySelector('.map-container'),
                 this.getOptions())
-            .then(map => {
+            .then(({map: map, ui: ui, platform: platform}) => {
                 this._mapsManager.addMap(this.toString(), map);
+                this._uiResolver(ui);
                 this._mapResolver(map);
             });
     }
@@ -232,8 +238,8 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
 
     private getOptions(): H.Map.Options {
         return {
-            center: <LatLng><any>{lat: 0, lng: 0},
-            zoom: 5
+            center: {lat: 0, lng: 0},
+            zoom: this.zoom || 5
         };
     }
 
