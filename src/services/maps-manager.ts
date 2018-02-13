@@ -18,7 +18,7 @@ function noop() {
  * Service responsible to execute arbitrary functions in specific google map context
  */
 @Injectable()
-export class MapsManager {
+export class HereMapsManager {
 
     private _maps: Map<string, H.Map> = new Map<string, H.Map>();
     private _browserLocationPromise: Promise<{ latitude: number, longitude: number }>;

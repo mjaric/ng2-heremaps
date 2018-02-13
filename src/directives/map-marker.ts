@@ -2,7 +2,7 @@
  * Created by mjaric on 9/28/16.
  */
 import {Directive, Input, Output, OnInit, OnDestroy, EventEmitter, forwardRef} from '@angular/core';
-import {MapsManager} from '../services/maps-manager';
+import {HereMapsManager} from '../services/maps-manager';
 import {BaseMapComponent} from './base-map-component';
 import {GeoPoint} from '../interface/lat-lng';
 import {toLatLng} from '../utils/position';
@@ -139,7 +139,7 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements
         this.delay = value;
     }
 
-    constructor(private _mapsManager: MapsManager) {
+    constructor(private _mapsManager: HereMapsManager) {
         super();
     }
 

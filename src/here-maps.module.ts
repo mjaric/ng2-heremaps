@@ -1,13 +1,22 @@
-import {MapsManager} from './services/maps-manager';
+import {HereMapsManager} from './services/maps-manager';
 import {MapPolylineDirective} from './directives/map-polyline';
 import {APP_INITIALIZER, ModuleWithProviders, NgModule} from '@angular/core';
-import {mapsLoaderFactory} from './maps-api-loader-factory';
 import {LoaderOptions} from './loaders/loader-options.interface';
 import {MapComponent} from './directives/map';
 import {MapMakerDirective} from './directives/map-marker';
 import {MapDirectionsDirective} from './directives/map-directions';
 import {LAZY_LOADER_OPTIONS} from './loaders/base-maps-api-loader';
 import {LazyMapsApiLoader} from './loaders/lazy-maps-api-loader';
+
+
+/**
+ * Factory function which builds handler for application initialization
+ * @param {LazyMapsApiLoader} loader
+ * @returns {Promise<any>}
+ */
+export function HereApiLoaderFactory(loader: LazyMapsApiLoader) {
+    return loader.load();
+}
 
 @NgModule({
     declarations: [
@@ -61,11 +70,11 @@ export class HereMapsModule {
                 LazyMapsApiLoader,
                 {
                     provide: APP_INITIALIZER,
-                    useFactory: mapsLoaderFactory,
+                    useFactory: HereApiLoaderFactory,
                     deps: [LazyMapsApiLoader],
                     multi: true
                 },
-                {provide: MapsManager, useClass: MapsManager}
+                {provide: HereMapsManager, useClass: HereMapsManager}
             ]
         };
     }

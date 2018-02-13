@@ -3,7 +3,7 @@
  */
 import {Directive, Input, OnDestroy, forwardRef} from '@angular/core';
 import {BaseMapComponent} from './base-map-component';
-import {MapsManager} from '../services/maps-manager';
+import {HereMapsManager} from '../services/maps-manager';
 import {PolylineOptions} from '../interface/polyline-options';
 
 
@@ -88,7 +88,7 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
         });
     }
 
-    constructor(mapsManager: MapsManager) {
+    constructor(mapsManager: HereMapsManager) {
         super();
         mapsManager
             .onApiLoad()

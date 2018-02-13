@@ -2,7 +2,7 @@
  * Created by mjaric on 9/30/16.
  */
 import {Directive, Input, Output, OnInit, OnDestroy, EventEmitter, forwardRef} from '@angular/core';
-import {MapsManager} from '../services/maps-manager';
+import {HereMapsManager} from '../services/maps-manager';
 import {BaseMapComponent} from './base-map-component';
 import {GeoPoint, LatLng} from '../interface/lat-lng';
 import {toLatLng} from '../utils/position';
@@ -132,7 +132,7 @@ export class MapDirectionsDirective extends BaseMapComponent<H.map.Polyline> imp
     @Input()
     public preserveViewport = true;
 
-    constructor(private _mapsManager: MapsManager) {
+    constructor(private _mapsManager: HereMapsManager) {
         super();
 
         this._mapsManager

@@ -3,7 +3,7 @@ import {BaseMapsApiLoader, LAZY_LOADER_OPTIONS} from './loaders/base-maps-api-lo
 import {LazyMapsApiLoader} from './loaders/lazy-maps-api-loader';
 
 // Export all services
-export {MapsManager} from './services/maps-manager';
+export {HereMapsManager} from './services/maps-manager';
 
 import {IZoomLevel} from './services/zoom-level.type';
 

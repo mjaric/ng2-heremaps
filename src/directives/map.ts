@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 
-import {MapsManager} from '../services/maps-manager';
+import {HereMapsManager} from '../services/maps-manager';
 import {BaseMapComponent} from './base-map-component';
 import {LatLng} from '../interface/lat-lng';
 import {MapUIService} from '../services/map-ui.service';
@@ -177,7 +177,7 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
     constructor(@Attribute('name')
                 private _name: string,
                 private _elem: ElementRef,
-                private _mapsManager: MapsManager) {
+                private _mapsManager: HereMapsManager) {
 
         this._id = MapComponent.counters++;
         this._map = new Promise(resolve => this._mapResolver = resolve);
