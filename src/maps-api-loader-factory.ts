@@ -5,15 +5,8 @@ import {LazyMapsApiLoader} from './loaders/lazy-maps-api-loader';
  * @param {LazyMapsApiLoader} loader
  * @returns {Promise<any>}
  */
-export function mapsLoaderFactory(loader: LazyMapsApiLoader): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-        loader
-            .load()
-            .then(r => {
-                resolve(r);
-            })
-            .catch((e) => {
-                reject(e);
-            })
-    });
+export function mapsLoaderFactory(loader: LazyMapsApiLoader) {
+    return function (): Promise<any> {
+        return loader.load();
+    };
 }
