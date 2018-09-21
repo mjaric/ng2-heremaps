@@ -5,6 +5,7 @@ import {Directive, Input, OnDestroy, forwardRef} from '@angular/core';
 import {BaseMapComponent} from './base-map-component';
 import {HereMapsManager} from '../services/maps-manager';
 import {PolylineOptions} from '../interface/polyline-options';
+import { MapComponent } from './map';
 
 
 @Directive({
@@ -13,6 +14,7 @@ import {PolylineOptions} from '../interface/polyline-options';
 })
 export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> implements OnDestroy {
 
+    protected mapComponent: MapComponent;
     private polyline: H.map.Polyline;
     private _fillColor: string;
     private _strokeColor: string;
@@ -97,6 +99,21 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
                 this.polyline = new H.map.Polyline(strip);
                 this.proxyResolver(this.polyline);
             });
+    }
+
+    public hasMapComponent(): boolean {
+        return !!this.mapComponent;
+    }
+
+    public setMapComponent(component: MapComponent, map: H.Map): void {
+        this.mapComponent = component;
+        this.proxy
+            .then((mapObject: H.map.Polyline) =>
+                setTimeout(() => {
+                    if (mapObject instanceof H.map.Object) {
+                        map.addObject(mapObject)
+                    }
+                }, this.delay || 0));
     }
 
     public ngOnDestroy(): void {
