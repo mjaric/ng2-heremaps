@@ -1,6 +1,3 @@
-import {IOptionalSetMapMethod} from './optional-set-map-method.interface';
-import {MapComponent} from './map';
-
 /**
  * Created by mjaric on 10/3/16.
  */
@@ -11,7 +8,6 @@ export abstract class BaseMapComponent<T extends H.map.Object | H.ui.base.Elemen
     protected proxy: Promise<T>;
     protected proxyResolver: (mapObject: T) => void;
 
-    protected mapComponent: MapComponent;
     protected delay: number;
 
     constructor() {
@@ -19,17 +15,9 @@ export abstract class BaseMapComponent<T extends H.map.Object | H.ui.base.Elemen
     }
 
     public hasMapComponent(): boolean {
-        return !!this.mapComponent;
+        return false;
     }
 
-    public setMapComponent(component: MapComponent, map: H.Map): void {
-        this.mapComponent = component;
-        this.proxy
-            .then((mapObject: T) =>
-                setTimeout(() => {
-                    if (mapObject instanceof H.map.Object) {
-                        map.addObject(mapObject)
-                    }
-                }, this.delay || 0));
-    }
+    public setMapComponent(component: any, map: H.Map): void { }
+
 }

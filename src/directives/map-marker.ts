@@ -6,6 +6,7 @@ import {HereMapsManager} from '../services/maps-manager';
 import {BaseMapComponent} from './base-map-component';
 import {GeoPoint} from '../interface/lat-lng';
 import {toLatLng} from '../utils/position';
+import { MapComponent } from './map';
 
 
 @Directive({
@@ -14,6 +15,7 @@ import {toLatLng} from '../utils/position';
 })
 export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements OnInit, OnDestroy {
 
+    protected mapComponent: MapComponent;
     private _clickable = true;
     /*
      * Outputs events
@@ -143,6 +145,20 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements
         super();
     }
 
+    public hasMapComponent(): boolean {
+        return !!this.mapComponent;
+    }
+
+    public setMapComponent(component: MapComponent, map: H.Map): void {
+        this.mapComponent = component;
+        this.proxy
+            .then((mapObject: H.map.Marker) =>
+                setTimeout(() => {
+                    if (mapObject instanceof H.map.Object) {
+                        map.addObject(mapObject)
+                    }
+                }, this.delay || 0));
+    }
 
     /*
      * Internal logic

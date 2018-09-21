@@ -23,6 +23,7 @@ import {MapUIService} from '../services/map-ui.service';
         <div class="heremap-container" style="width: inherit; height: inherit"></div>
         <ng-content></ng-content>
     `,
+    styles: [':host {width: 100%; height: 100%}'],
     providers: [{provide: MapUIService, useClass: MapUIService}]
 })
 export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
@@ -119,13 +120,13 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
     public zoom = 5;
 
     /**
-     * The maximum zoom level which will be displayed on the map.
+     * The minimum zoom level which will be displayed on the map.
      */
     @Input()
     public minZoom: number;
 
     /**
-     * The minimum zoom level which will be displayed on the map.
+     * The maximum zoom level which will be displayed on the map.
      */
     @Input()
     public maxZoom: number;
@@ -195,7 +196,7 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
     ngOnInit(): void {
         this._mapsManager
             .createMap(
-                this._elem.nativeElement.querySelector('.map-container'),
+                this._elem.nativeElement.querySelector('.heremap-container'),
                 this.getOptions())
             .then(({map: map, ui: ui, platform: platform}) => {
                 this._mapsManager.addMap(this.toString(), map);

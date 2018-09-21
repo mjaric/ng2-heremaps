@@ -1,7 +1,8 @@
-import {OpaqueToken} from '@angular/core';
+import { InjectionToken } from '@angular/core';
+import { LoaderOptions } from './loader-options.interface';
 
 
-export const LAZY_LOADER_OPTIONS = new OpaqueToken('_heremaps.LazyMapLoaderApiOptions');
+export const LAZY_LOADER_OPTIONS = new InjectionToken<LoaderOptions>('_heremaps.LazyMapLoaderApiOptions');
 
 /**
  * Created by mjaric on 9/28/16.

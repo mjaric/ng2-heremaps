@@ -6,6 +6,7 @@ import {HereMapsManager} from '../services/maps-manager';
 import {BaseMapComponent} from './base-map-component';
 import {GeoPoint, LatLng} from '../interface/lat-lng';
 import {toLatLng} from '../utils/position';
+import { MapComponent } from './map';
 
 export type DirectionsResolver = (origin: LatLng, destination: LatLng) => Promise<LatLng[]>;
 
@@ -17,6 +18,7 @@ export class MapDirectionsDirective extends BaseMapComponent<H.map.Polyline> imp
     // private _originMarker: H.map.Marker;
     // private _destinationMarker: H.map.Marker;
 
+    protected mapComponent: MapComponent;
     private _origin: GeoPoint;
     private _destination: GeoPoint;
     private _lineWidth: number;
@@ -143,6 +145,20 @@ export class MapDirectionsDirective extends BaseMapComponent<H.map.Polyline> imp
             });
     }
 
+    public hasMapComponent(): boolean {
+        return !!this.mapComponent;
+    }
+
+    public setMapComponent(component: MapComponent, map: H.Map): void {
+        this.mapComponent = component;
+        this.proxy
+            .then((mapObject: H.map.Polyline) =>
+                setTimeout(() => {
+                    if (mapObject instanceof H.map.Object) {
+                        map.addObject(mapObject)
+                    }
+                }, this.delay || 0));
+    }
     /*
      * Internal logic
      * **********************************************************

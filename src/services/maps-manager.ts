@@ -135,7 +135,7 @@ export class HereMapsManager {
                         resolve(success.coords);
                     }, (error) => {
                         console.error(error);
-                        if (error.code !== PositionError.PERMISSION_DENIED) {
+                        if (error.code !== 1) {
                             console.warn(`Permission is accepted but error encounter with message: ${error.message}`);
                         }
                         // if user didn't answer return default

@@ -15,7 +15,8 @@ import {LazyMapsApiLoader} from './loaders/lazy-maps-api-loader';
  * @returns {Promise<any>}
  */
 export function HereApiLoaderFactory(loader: LazyMapsApiLoader) {
-    return loader.load();
+    const result = () => loader.load();
+    return result;
 }
 
 @NgModule({

@@ -48,8 +48,8 @@ export class LazyMapsApiLoader extends BaseMapsApiLoader {
         let libs = this
             ._options
             .libraries
-            .filter(l => l !== 'core');
-        this._options.libraries = ['core', ...libs];
+            .filter(l => l !== 'core' && l !== 'service');
+        this._options.libraries = ['service', ...libs];
     }
 
     load(): Promise<any> {
@@ -62,7 +62,7 @@ export class LazyMapsApiLoader extends BaseMapsApiLoader {
                         .Platform({
                             app_id: this._options.appId,
                             app_code: this._options.apiKey,
-                            useHTTPS: document.location.protocol === 'https:'
+                            useHTTPS: (document.location as any).protocol === 'https:'
                         });
                     this._resolvePlatform(platform);
                 })
@@ -74,12 +74,12 @@ export class LazyMapsApiLoader extends BaseMapsApiLoader {
     }
 
     private loadModules(): Promise<any> {
-        let promises = this
+        // Load the Core first then the rest of the files
+        return this.loadModule('core').then(() => Promise.all(this
             ._options
             .libraries
             .reduce(this.distinct, [])
-            .map(this.loadModule.bind(this));
-        return Promise.all(promises);
+            .map(moduleName => this.loadModule(moduleName))));
     }
 
     private loadModule(moduleName: string): Promise<any> {
@@ -123,9 +123,9 @@ export class LazyMapsApiLoader extends BaseMapsApiLoader {
     }
 
     private createModuleUrl(module: string, ext = 'js'): string {
-        let protocol = document.location.protocol,
+        let protocol = (document.location as any).protocol,
             version = this._options.apiVersion;
-        return `${protocol}//js.cit.api.here.com/v3/${version}/mapsjs-{module}.${ext}`;
+        return `${protocol}//js.api.here.com/v3/${version}/mapsjs-${module}.${ext}`;
     }
 
     private distinct(acc: string[], next: string) {
