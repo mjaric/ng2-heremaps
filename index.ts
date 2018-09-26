@@ -24,4 +24,4 @@ export {
     MapUIService
 } from './src/services';
 
-export {HereMapsModule, HereApiLoaderFactory} from './src/here-maps.module';
+export {HereMapsModule} from './src/here-maps.module';

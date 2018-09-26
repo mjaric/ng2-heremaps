@@ -1,17 +1,19 @@
 /**
  * Created by mjaric on 9/28/16.
  */
-import {Injectable} from '@angular/core';
-import {LazyMapsApiLoader} from '../loaders/lazy-maps-api-loader';
-import {MarkerOptions} from '../interface/marker-options';
-import {LatLng} from '../interface/lat-lng';
+import { Injectable } from '@angular/core';
+import { LazyMapsApiLoader } from '../loaders/lazy-maps-api-loader';
+import { MarkerOptions } from '../interface/marker-options';
+import { LatLng } from '../interface/lat-lng';
+import { IControlOptions } from '../interface/control-options.interface';
 
-const DefaultCoords: { latitude: number, longitude: number } = {
-    latitude: 40.730610,
-    longitude: -73.935242
+const DefaultCoords: { latitude: number; longitude: number } = {
+  latitude: 40.73061,
+  longitude: -73.935242
 };
 
 function noop() {
+  // noop
 }
 
 /**
@@ -19,9 +21,13 @@ function noop() {
  */
 @Injectable()
 export class HereMapsManager {
+  private _maps: Map<string, H.Map> = new Map<string, H.Map>();
+  private _browserLocationPromise: Promise<{
+    latitude: number;
+    longitude: number;
+  }>;
 
-    private _maps: Map<string, H.Map> = new Map<string, H.Map>();
-    private _browserLocationPromise: Promise<{ latitude: number, longitude: number }>;
+  private _defaultLayers: any;
 
     constructor(private loader: LazyMapsApiLoader) {
         // check browser location
@@ -43,9 +49,7 @@ export class HereMapsManager {
         return this
             .loader
             .platformReady
-            .then(() => {
-                return new H.map.Marker(<LatLng>(options).position);
-            });
+            .then(() => new H.map.Marker(options.position as LatLng));
     }
 
     // createDirections(options?: google.maps.DirectionsRendererOptions): Promise<google.maps.DirectionsRenderer> {
@@ -87,20 +91,49 @@ export class HereMapsManager {
     //         });
     // }
 
-    public createMap(el: HTMLElement, options?: H.Map.Options): Promise<{map: H.Map, ui: H.ui.UI, platform: H.service.Platform}> {
-        return this.loader
-            .platformReady
-            .then(platform => {
-                let defaultLayers = platform.createDefaultLayers();
-                let map = new H.Map(el, defaultLayers.normal.map, options);
-                let ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
-                ui.setUnitSystem(H.ui.UnitSystem.IMPERIAL);
-                ui.removeControl('mapsettings');
-                let mapEvents = new H.mapevents.MapEvents(map);
-                let behaviour = new H.mapevents.Behavior(mapEvents);
-                return {map, ui, platform};
-            });
-    }
+  public createMap(
+    el: HTMLElement,
+    options?: H.Map.Options,
+    controls?: IControlOptions
+  ): Promise<{ map: H.Map; ui: H.ui.UI; platform: H.service.Platform }> {
+    return this.loader.platformReady.then(platform => {
+      const defaultLayers =
+        this._defaultLayers || platform.createDefaultLayers();
+      this._defaultLayers = defaultLayers;
+      const map = new H.Map(el, defaultLayers.normal.map, options);
+      const ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');
+      ui.setUnitSystem(H.ui.UnitSystem.IMPERIAL);
+
+      const mapEvents = new H.mapevents.MapEvents(map);
+      const behavior = new H.mapevents.Behavior(mapEvents);
+
+      if (controls) {
+        if (!controls.mapTypeControl) {
+          ui.removeControl('mapsettings');
+        }
+        if (!controls.zoomControl) {
+          ui.removeControl('zoom');
+        }
+        if (!controls.scaleControl) {
+          ui.removeControl('scalebar');
+        }
+        if (!controls.streetViewControl && (H as any).PanoramaView) {
+          ui.removeControl('panorama');
+        }
+        if (!controls.scrollwheel) {
+          behavior.disable(H.mapevents.Behavior.WHEELZOOM);
+        }
+        if (!controls.enableDoubleClickZoom) {
+          behavior.disable(H.mapevents.Behavior.DBLTAPZOOM);
+        }
+        if (!controls.draggable) {
+          behavior.disable(H.mapevents.Behavior.DRAGGING);
+        }
+      }
+
+      return { map, ui, platform };
+    });
+  }
 
     public getMap(name: string): Promise<H.Map> {
         return this.loader

@@ -1,10 +1,10 @@
-import {LatLng} from './lat-lng';
+import { LatLng } from './lat-lng';
 
-export type MarkerOptions = {
-    position?: LatLng;
-    title?: string;
-    visible?: boolean;
-    zIndex?: number;
-    icon?: any;
-    label?: any
+export interface MarkerOptions {
+  position?: LatLng;
+  title?: string;
+  visible?: boolean;
+  zIndex?: number;
+  icon?: any;
+  label?: any;
 }

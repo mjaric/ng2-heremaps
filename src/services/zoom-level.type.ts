@@ -7,6 +7,6 @@ export interface IZoomLevel {
 }
 
 export interface IAnimation {
-  BOUNCE: number,
-  DROP: number
+  BOUNCE: number;
+  DROP: number;
 }

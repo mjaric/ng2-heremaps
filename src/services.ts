@@ -46,5 +46,5 @@ export {LatLng, GeoPoint} from './interface/lat-lng';
 export {MarkerOptions} from './interface/marker-options';
 export {PolylineOptions} from './interface/polyline-options';
 export {MapUIService} from './services/map-ui.service';
-
+export {IControlOptions} from './interface/control-options.interface';
 

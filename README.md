@@ -51,7 +51,7 @@ class AppModule {}
 | center                 | LatLng or                      | **REQUIRED**      | The initial Map center.                                                     |
 |                        |  { latitude: number,           |                   |                                                                             |
 |                        |  longitude: number }           |                   |                                                                             |
-| disableDoubleClickZoom | boolean                        | true              | Enables/disables zoom and center on double click.                           |
+| enableDoubleClickZoom  | boolean                        | true              | Enables/disables zoom and center on double click.                           |
 | draggable              | boolean                        | true              | If false, prevents the map from being dragged.                              |
 | keyboardShortcuts      | boolean                        | true              | If false, prevents the map from being controlled by the keyboard.           |
 | scrollwheel            | boolean                        | true              | If false, disables scrollwheel zooming on the map.                          |

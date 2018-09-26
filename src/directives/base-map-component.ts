@@ -2,22 +2,23 @@
  * Created by mjaric on 10/3/16.
  */
 
+export abstract class BaseMapComponent<
+  T extends H.map.Object | H.ui.base.Element
+> {
+  protected proxy: Promise<T>;
+  protected proxyResolver: (mapObject: T) => void;
 
-export abstract class BaseMapComponent<T extends H.map.Object | H.ui.base.Element> {
+  protected delay: number;
 
-    protected proxy: Promise<T>;
-    protected proxyResolver: (mapObject: T) => void;
+  constructor() {
+    this.proxy = new Promise(resolve => (this.proxyResolver = resolve));
+  }
 
-    protected delay: number;
+  public hasMapComponent(): boolean {
+    return false;
+  }
 
-    constructor() {
-        this.proxy = new Promise(resolve => this.proxyResolver = resolve);
-    }
-
-    public hasMapComponent(): boolean {
-        return false;
-    }
-
-    public setMapComponent(component: any, map: H.Map): void { }
-
+  public setMapComponent(component: any, map: H.Map, ui: H.ui.UI): void {
+    // Placeholder for fixing circular dependency, if not extended is noop.
+  }
 }
