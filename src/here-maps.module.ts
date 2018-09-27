@@ -1,26 +1,29 @@
-import {HereMapsManager} from './services/maps-manager';
-import {MapPolylineDirective} from './directives/map-polyline';
-import {ModuleWithProviders, NgModule} from '@angular/core';
-import {LoaderOptions} from './loaders/loader-options.interface';
-import {MapComponent} from './directives/map';
-import {MapMakerDirective} from './directives/map-marker';
-import {MapDirectionsDirective} from './directives/map-directions';
-import {LAZY_LOADER_OPTIONS} from './loaders/base-maps-api-loader';
-import {LazyMapsApiLoader} from './loaders/lazy-maps-api-loader';
+import { HereMapsManager } from './services/maps-manager';
+import { MapPolylineDirective } from './directives/map-polyline';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
+import { LoaderOptions } from './loaders/loader-options.interface';
+import { MapComponent } from './directives/map';
+import { MapMakerDirective } from './directives/map-marker';
+import { MapDirectionsDirective } from './directives/map-directions';
+import { LAZY_LOADER_OPTIONS } from './loaders/base-maps-api-loader';
+import { LazyMapsApiLoader } from './loaders/lazy-maps-api-loader';
+import { MapBubbleDirective } from './directives/map-bubble';
 
 @NgModule({
-    declarations: [
-        MapComponent,
-        MapDirectionsDirective,
-        MapMakerDirective,
-        MapPolylineDirective
-    ],
-    exports: [
-        MapComponent,
-        MapDirectionsDirective,
-        MapMakerDirective,
-        MapPolylineDirective
-    ]
+  declarations: [
+    MapComponent,
+    MapDirectionsDirective,
+    MapMakerDirective,
+    MapPolylineDirective,
+    MapBubbleDirective
+  ],
+  exports: [
+    MapComponent,
+    MapDirectionsDirective,
+    MapMakerDirective,
+    MapPolylineDirective,
+    MapBubbleDirective
+  ]
 })
 export class HereMapsModule {
     /**
@@ -58,7 +61,7 @@ export class HereMapsModule {
                     useValue: loaderOptions
                 },
                 LazyMapsApiLoader,
-                {provide: HereMapsManager, useClass: HereMapsManager}
+                HereMapsManager
             ]
         };
     }

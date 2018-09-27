@@ -33,8 +33,6 @@ import { toLatLng } from '../utils/position';
 export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
   static counters = 0;
 
-  protected _uiResolver: (ui: H.ui.UI) => void;
-
   @ContentChildren(forwardRef(() => BaseMapComponent), {})
   public mapComponents: QueryList<BaseMapComponent<H.map.Object>>;
 
@@ -183,6 +181,8 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
   @Output()
   clickMap = new EventEmitter<H.mapevents.Event>();
 
+  protected _uiResolver: (ui: H.ui.UI) => void;
+
   private _id: number;
   private _map: Promise<H.Map>;
   private _mapResolver: (map: H.Map) => void;
@@ -294,7 +294,7 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
       const pointer = e.currentPointer;
       const coordinates = map.screenToGeo(pointer.viewportX, pointer.viewportY);
 
-      this.clickMap.emit({...e, coordinates});
+      this.clickMap.emit({ ...e, coordinates });
     });
   }
 

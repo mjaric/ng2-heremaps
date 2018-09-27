@@ -15,7 +15,7 @@ import { toLatLng } from '../utils/position';
 import { MapComponent } from './map';
 
 @Directive({
-  selector: 'here-map-marker',
+  selector: 'map-marker',
   providers: [
     {
       provide: BaseMapComponent,
@@ -24,7 +24,6 @@ import { MapComponent } from './map';
   ]
 })
 export class MapMakerDirective extends BaseMapComponent<H.map.Marker> {
-  protected mapComponent: MapComponent;
   /*
    * Outputs events
    * **********************************************************
@@ -111,7 +110,15 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> {
    */
   @Input()
   set icon(value: string | H.map.Icon) {
-    this.proxy.then(marker => marker.setIcon(value));
+    this.proxy.then(marker => {
+      if (typeof value === 'string') {
+        value = new H.map.Icon(value, {
+          size: { w: 20, h: 20 },
+          crossOrigin: false
+        });
+      }
+      marker.setIcon(value);
+    });
   }
 
   /**
@@ -156,6 +163,8 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> {
     this.delay = value;
   }
 
+  protected mapComponent: MapComponent;
+
   private _clickable = true;
 
   constructor(private _mapsManager: HereMapsManager) {
@@ -166,16 +175,18 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> {
     return !!this.mapComponent;
   }
 
-  public setMapComponent(component: MapComponent, map: H.Map, ui: H.ui.UI): void {
+  public setMapComponent(
+    component: MapComponent,
+    map: H.Map,
+    ui: H.ui.UI
+  ): void {
     this.mapComponent = component;
     this.proxy.then((mapObject: H.map.Marker) =>
-      setTimeout(
-        () => {
-          if (mapObject instanceof H.map.Object) {
-            map.addObject(mapObject);
-          }
-        },
-        this.delay || 0)
+      setTimeout(() => {
+        if (mapObject instanceof H.map.Object) {
+          map.addObject(mapObject);
+        }
+      }, this.delay || 0)
     );
   }
 
