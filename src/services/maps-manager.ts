@@ -43,13 +43,13 @@ export class HereMapsManager {
 
   public createMarker(options: MarkerOptions): Promise<H.map.Marker> {
     return this.loader.platformReady.then(() => {
-      return new H.map.Marker(options.position);
+      return new H.map.Marker(options.position as LatLng);
     });
   }
 
   public createBubble(options: BubbleOptions): Promise<H.ui.InfoBubble> {
     return this.loader.platformReady.then(() => {
-      return new H.ui.InfoBubble(options.position);
+      return new H.ui.InfoBubble(options.position as LatLng);
     });
   }
 

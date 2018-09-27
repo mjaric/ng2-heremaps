@@ -220,11 +220,15 @@ export class MapDirectionsDirective extends BaseMapComponent<H.map.Polyline>
           this.intermediatePoints || []
         )
         .then(r => {
-          const newRoute = r.response.route[0].shape.map(str => {
-            const parts = str.split(',');
-            return { lat: parseFloat(parts[0]), lng: parseFloat(parts[1]) };
-          });
-          this.renderRoute(newRoute || []);
+          if (r && r.response && r.response.route) {
+            const newRoute = r.response.route[0].shape.map(str => {
+              const parts = str.split(',');
+              return { lat: parseFloat(parts[0]), lng: parseFloat(parts[1]) };
+            });
+            this.renderRoute(newRoute || []);
+          } else {
+            this.renderRoute([]);
+          }
         })
         .catch(e => {
           this.renderRoute([]);
