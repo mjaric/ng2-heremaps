@@ -6,8 +6,10 @@ import {
   Input,
   Output,
   EventEmitter,
-  forwardRef
+  forwardRef,
+  OnDestroy
 } from '@angular/core';
+
 import { HereMapsManager } from '../services/maps-manager';
 import { BaseMapComponent } from './base-map-component';
 import { GeoPoint } from '../interface/lat-lng';
@@ -23,7 +25,7 @@ import { MapComponent } from './map';
     }
   ]
 })
-export class MapMakerDirective extends BaseMapComponent<H.map.Marker> {
+export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements OnDestroy{
   /*
    * Outputs events
    * **********************************************************
@@ -170,6 +172,18 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> {
   constructor(private _mapsManager: HereMapsManager) {
     super();
   }
+
+  ngOnDestroy() {
+    this.proxy.then(marker => {
+      marker.dispose();
+      this.mapComponent.getMap().then(map => {
+        if (map.getObjects().includes(marker)) {
+          map.removeObject(marker);
+        }
+      });
+    });
+  }
+
 
   public hasMapComponent(): boolean {
     return !!this.mapComponent;
