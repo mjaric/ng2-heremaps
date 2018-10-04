@@ -135,7 +135,7 @@ export class HereMapsManager {
   }
 
   public getMap(name: string): Promise<H.Map> {
-    return this.loader.load().then(() => this._maps.get(name));
+    return this.loader.load().then(() => this._maps.get(name) as H.Map);
   }
 
   public addMap(name: string, map: H.Map): void {

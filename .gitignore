@@ -5,6 +5,9 @@ npm-debug.log
 # TypeScript
 *.js
 !rollup.config.js
+!build.js
+!rollup.es.config.js
+!spec.bundle.js
 *.map
 *.d.ts
 # JetBrains
@@ -23,4 +26,9 @@ Desktop.ini
 **/.DS_Store
 projectFilesBackup/
 
-dist/
+/dist
+/documentation
+/coverage
+
+*.log
+*.tgz

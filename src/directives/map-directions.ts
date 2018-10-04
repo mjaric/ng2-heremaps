@@ -145,7 +145,6 @@ export class MapDirectionsDirective extends BaseMapComponent<H.map.Polyline>
   /**
    * By default, the input map is centered and zoomed to the bounding box of this set of directions.
    * If this option is set to true, the viewport is left unchanged, unless the map's center and zoom were never set.
-   * @type {boolean}
    */
   @Input()
   public preserveViewport = true;

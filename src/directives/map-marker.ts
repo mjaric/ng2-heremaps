@@ -177,7 +177,7 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements
     this.proxy.then(marker => {
       marker.dispose();
       this.mapComponent.getMap().then(map => {
-        if (map.getObjects().includes(marker)) {
+        if (map.getObjects().indexOf(marker) >= 0) {
           map.removeObject(marker);
         }
       });

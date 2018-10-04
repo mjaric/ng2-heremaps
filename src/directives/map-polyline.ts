@@ -129,14 +129,14 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
             });
     }
 
-    private createFrom<T>(source: any, keys: string[]): T {
-        return Object
-            .keys(source)
-            .reduce((acc: T, next: string) => {
-                if (source[next] !== undefined) {
-                    acc[next] = source[next];
-                }
-                return acc;
-            }, <T>{});
-    }
+    // private createFrom<T>(source: any, keys: string[]): T {
+    //     return Object
+    //         .keys(source)
+    //         .reduce((acc: T, next: string) => {
+    //             if (source[next] !== undefined) {
+    //                 acc[next] = source[next];
+    //             }
+    //             return acc;
+    //         }, <T>{});
+    // }
 }

@@ -12,7 +12,6 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
 
 import { HereMapsManager } from '../services/maps-manager';
 import { BaseMapComponent } from './base-map-component';
@@ -20,6 +19,7 @@ import { LatLng, GeoPoint } from '../interface/lat-lng';
 import { MapUIService } from '../services/map-ui.service';
 import { IControlOptions } from '../interface/control-options.interface';
 import { toLatLng } from '../utils/position';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'heremap',
@@ -42,7 +42,6 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
 
   /**
    * Should map auto resize bounds to current set of markers
-   * @type {boolean} default is true
    */
   @Input()
   public autoFitMarkers = true;

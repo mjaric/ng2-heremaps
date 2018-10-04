@@ -1,6 +1,7 @@
+import { ModuleWithProviders, NgModule } from '@angular/core';
+
 import { HereMapsManager } from './services/maps-manager';
 import { MapPolylineDirective } from './directives/map-polyline';
-import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { LoaderOptions } from './loaders/loader-options.interface';
 import { MapComponent } from './directives/map';
 import { MapMakerDirective } from './directives/map-marker';
@@ -50,7 +51,6 @@ export class HereMapsModule {
      * }
      *
      * @param loaderOptions
-     * @returns {ModuleWithProviders}
      */
     static forRoot(loaderOptions: LoaderOptions): ModuleWithProviders {
         return {

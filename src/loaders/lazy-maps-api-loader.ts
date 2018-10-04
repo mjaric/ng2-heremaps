@@ -1,7 +1,7 @@
 /**
  * Created by mjaric on 9/28/16.
  */
-import { Injectable, Inject, InjectionToken } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { BaseMapsApiLoader, LAZY_LOADER_OPTIONS } from './base-maps-api-loader';
 import { LoaderOptions } from './loader-options.interface';
 import { ScriptLoaderProtocol } from './script-loader-protocol';
