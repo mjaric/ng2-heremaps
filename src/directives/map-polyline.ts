@@ -29,7 +29,7 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
         if (this._fillColor !== color) {
             this._fillColor = color;
             this.proxy.then(p => {
-                let style = Object.assign({}, p.getStyle());
+                const style = Object.assign({}, p.getStyle());
                 style.fillColor = color;
                 p.setStyle(style);
             });
@@ -45,7 +45,7 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
         if (this._strokeColor !== color) {
             this._strokeColor = color;
             this.proxy.then(p => {
-                let style = Object.assign({}, p.getStyle());
+                const style = Object.assign({}, p.getStyle());
                 style.strokeColor = color;
                 p.setStyle(style);
             });
@@ -61,7 +61,7 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
         if (this._lineWidth !== lineWidth) {
             this._lineWidth = lineWidth;
             this.proxy.then(p => {
-                let style = Object.assign({}, p.getStyle());
+                const style = Object.assign({}, p.getStyle());
                 style.lineWidth = lineWidth;
                 p.setStyle(style);
             });
@@ -71,7 +71,7 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
     @Input()
     set options(opts: PolylineOptions) {
         this.proxy.then((polyline: H.map.Polyline) => {
-            let style = {
+            const style = {
                     strokeColor: opts.strokeColor || this.strokeColor,
                     fillColor: opts.fillColor || this.fillColor,
                     lineWidth: opts.lineWidth || this.lineWidth
@@ -95,7 +95,7 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
         mapsManager
             .onApiLoad()
             .then(() => {
-                let strip = new H.geo.Strip();
+                const strip = new H.geo.Strip();
                 this.polyline = new H.map.Polyline(strip);
                 this.proxyResolver(this.polyline);
             });
@@ -111,7 +111,7 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
             .then((mapObject: H.map.Polyline) =>
                 setTimeout(() => {
                     if (mapObject instanceof H.map.Object) {
-                        map.addObject(mapObject)
+                        map.addObject(mapObject);
                     }
                 }, this.delay || 0));
     }

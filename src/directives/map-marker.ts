@@ -25,7 +25,7 @@ import { MapComponent } from './map';
     }
   ]
 })
-export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements OnDestroy{
+export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements OnDestroy {
   /*
    * Outputs events
    * **********************************************************
