@@ -21,8 +21,8 @@ import { HereMapsModule } from 'ng2-heremaps';
     HereMapsModule.forRoot({
       apiKey: 'your heremaps API key',
       appId: 'your heremaps API id',
-      apiVersion: '3.3',
-      libraries: ['places', 'geometry']
+      apiVersion: '3.0',
+      libraries: ['core', 'service']
     }),
     ...
   ],
