@@ -1,4 +1,4 @@
-export {LoaderOptions} from './src/loaders/loader-options.interface';
+export {LoaderOptions} from './loaders/loader-options.interface';
 export {
     BaseMapComponent,
     MapComponent,
@@ -6,7 +6,7 @@ export {
     MapMakerDirective,
     MapPolylineDirective,
     IOptionalSetMapMethod
-} from './src/directives';
+} from './directives';
 export {
     BaseMapsApiLoader,
     LAZY_LOADER_OPTIONS,
@@ -22,6 +22,6 @@ export {
     MarkerOptions,
     PolylineOptions,
     MapUIService
-} from './src/services';
+} from './services';
 
-export {HereMapsModule} from './src/here-maps.module';
+export {HereMapsModule} from './here-maps.module';
