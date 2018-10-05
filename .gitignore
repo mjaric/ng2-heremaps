@@ -4,6 +4,7 @@ npm-debug.log
 
 # TypeScript
 *.js
+!/docs/**/*.js
 !rollup.config.js
 !build.js
 !rollup.es.config.js
