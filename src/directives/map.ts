@@ -22,7 +22,6 @@ import { toLatLng } from '../utils/position';
 import { Subscription } from 'rxjs';
 
 /**
- * @description
  * Component that should render and initialize map instance.
  * Use it to define point in html document where map should be rendered
  */

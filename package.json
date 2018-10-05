@@ -22,7 +22,7 @@
         "publish:lib": "npm run build && npm publish ./dist",
         "publish:lib:next": "npm run build && npm publish --tag next ./dist",
         "compodoc": "compodoc -p tsconfig.json -n 'Angular Heremaps' -d ./docs",
-        "compodoc:serve": "compodoc -s"
+        "compodoc:serve": "compodoc -s -d ./docs"
     },
     "author": {
         "name": "Milan Jaric",
