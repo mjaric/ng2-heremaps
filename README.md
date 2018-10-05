@@ -1,6 +1,8 @@
-## Features
+## Angular Heremaps
 
-- Allows you to interact with the HERE Maps API for JavaScript through Angular.
+Allows you to interact with the HERE Maps API for JavaScript through Angular.
+
+Check [API Documentation](https://mjaric.github.io/ng2-heremaps/)
 
 ## Install
 
