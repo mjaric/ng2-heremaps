@@ -1,0 +1,256 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular Heremaps</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">Angular Heremaps</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h2 id="features">Features</h2>
+<ul>
+<li>Allows you to interact with the HERE Maps API for JavaScript through Angular.</li>
+</ul>
+<h2 id="install">Install</h2>
+<div><pre class="line-numbers"><code class="language-bash">npm install ng2-heremaps &#64;types/heremaps --save</code></pre></div><h2 id="setup">Setup</h2>
+<p><strong>step 1:</strong> add ng2-heremaps to app NgModule</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { HereMapsModule } from &#39;ng2-heremaps&#39;;
+
+&#64;NgModule({
+  imports: [
+    ...
+    HereMapsModule.forRoot({
+      apiKey: &#39;your heremaps API key&#39;,
+      appId: &#39;your heremaps API id&#39;,
+      apiVersion: &#39;3.0&#39;,
+      libraries: [&#39;core&#39;, &#39;service&#39;]
+    }),
+    ...
+  ],
+  bootstrap: [AppComponent],
+  declarations: [AppComponent]
+})
+class AppModule {}</code></pre></div><h2 id="use">Use</h2>
+<h3 id="basic-map">Basic map</h3>
+<div><pre class="line-numbers"><code class="language-html"> &lt;div style=&quot;height: 400px; width: 600px;&quot;&gt;
+    &lt;heremap [center]=&quot;{latitude: 40.730610, longitude: -73.935242}&quot;&gt;&lt;/heremap&gt;
+  &lt;/div&gt;</code></pre></div><h4 id="inputs">Inputs</h4>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Input</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoFitMarkers</td>
+<td>boolean</td>
+<td>true</td>
+<td>Should map auto resize bounds to current set of markers</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>string</td>
+<td>| This color will be visible when tiles have not yet loaded as the user pans.</td>
+<td></td>
+</tr>
+<tr>
+<td>center</td>
+<td>LatLng or</td>
+<td><strong>REQUIRED</strong></td>
+<td>The initial Map center.</td>
+</tr>
+<tr>
+<td>|  { latitude: number,</td>
+<td>|</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>|  longitude: number }</td>
+<td>|</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>enableDoubleClickZoom</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enables/disables zoom and center on double click.</td>
+</tr>
+<tr>
+<td>draggable</td>
+<td>boolean</td>
+<td>true</td>
+<td>If false, prevents the map from being dragged.</td>
+</tr>
+<tr>
+<td>keyboardShortcuts</td>
+<td>boolean</td>
+<td>true</td>
+<td>If false, prevents the map from being controlled by the keyboard.</td>
+</tr>
+<tr>
+<td>scrollwheel</td>
+<td>boolean</td>
+<td>true</td>
+<td>If false, disables scrollwheel zooming on the map.</td>
+</tr>
+<tr>
+<td>zoom</td>
+<td>number</td>
+<td>5</td>
+<td>Map zoom level</td>
+</tr>
+<tr>
+<td>minZoom</td>
+<td>number</td>
+<td>| The minimum zoom level which will be displayed on the map.</td>
+<td></td>
+</tr>
+<tr>
+<td>maxZoom</td>
+<td>number</td>
+<td>| The maximum zoom level which will be displayed on the map.</td>
+<td></td>
+</tr>
+<tr>
+<td>disableDefaultUI</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enables/disables all default UI.</td>
+</tr>
+<tr>
+<td>mapTypeControl</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enabled/Disabled state of the Map type control.</td>
+</tr>
+<tr>
+<td>rotateControl</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enabled/Disabled state of the Rotate control.</td>
+</tr>
+<tr>
+<td>scaleControl</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enabled/Disabled state of the Scale control.</td>
+</tr>
+<tr>
+<td>streetViewControl</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enabled/Disabled state of the Street View Pegman control.</td>
+</tr>
+<tr>
+<td>animateZoom</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enabled/Disabled zoom animation.</td>
+</tr>
+<tr>
+<td>zoomControl</td>
+<td>boolean</td>
+<td>true</td>
+<td>Enabled/Disabled state of the Zoom control.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="directives">Directives</h3>
+<p>There are directives for directions, markers, and polylines. Please see the files directly to see the available inputs and outputs.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <script src="./js/menu-wc.js"></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

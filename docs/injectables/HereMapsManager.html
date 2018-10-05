@@ -1,0 +1,1436 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Angular Heremaps</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Angular Heremaps</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>HereMapsManager</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/services/maps-manager.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service responsible to execute arbitrary functions in specific google map context</p>
+
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_browserLocationPromise">_browserLocationPromise</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_defaultLayers">_defaultLayers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_maps">_maps</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#addMap">addMap</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#calculateMapBounds">calculateMapBounds</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#createBubble">createBubble</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#createMap">createMap</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#createMarker">createMarker</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#generateWaypointParam">generateWaypointParam</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getBrowserLocation">getBrowserLocation</a>
+                            </li>
+                            <li>
+                                <a href="#getDirections">getDirections</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getMap">getMap</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onApiLoad">onApiLoad</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#removeMap">removeMap</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(loader: <a href="../injectables/LazyMapsApiLoader.html">LazyMapsApiLoader</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/services/maps-manager.ts:31</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>loader</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/LazyMapsApiLoader.html" target="_self" >LazyMapsApiLoader</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addMap"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            addMap
+                            </b>
+                            <a href="#addMap"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>addMap(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, map: H.Map)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/services/maps-manager.ts:141</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>name</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>map</td>
+                                                        <td>
+                                                                    <code>H.Map</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="calculateMapBounds"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            calculateMapBounds
+                            </b>
+                            <a href="#calculateMapBounds"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>calculateMapBounds(points: <a href="../interfaces/LatLng.html">Array<LatLng | Coordinates | H.map.AbstractMarker></a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">src/services/maps-manager.ts:192</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>points</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/LatLng.html" target="_self" >Array&lt;LatLng | Coordinates | H.map.AbstractMarker&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>[]</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;H.geo.Rect&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createBubble"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            createBubble
+                            </b>
+                            <a href="#createBubble"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>createBubble(options: <a href="../interfaces/BubbleOptions.html">BubbleOptions</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/services/maps-manager.ts:50</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/BubbleOptions.html" target="_self" >BubbleOptions</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;H.ui.InfoBubble&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createMap"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            createMap
+                            </b>
+                            <a href="#createMap"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>createMap(el: HTMLElement, options?: H.Map.Options, controls?: <a href="../interfaces/IControlOptions.html">IControlOptions</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/services/maps-manager.ts:93</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>el</td>
+                                                        <td>
+                                                                    <code>HTMLElement</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                                    <code>H.Map.Options</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>controls</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/IControlOptions.html" target="_self" >IControlOptions</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createMarker"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            createMarker
+                            </b>
+                            <a href="#createMarker"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>createMarker(options: <a href="../interfaces/MarkerOptions.html">MarkerOptions</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/services/maps-manager.ts:44</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>options</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/MarkerOptions.html" target="_self" >MarkerOptions</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;H.map.Marker&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="generateWaypointParam"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            generateWaypointParam
+                            </b>
+                            <a href="#generateWaypointParam"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>generateWaypointParam(coordinates: <a href="../undefineds/GeoPoint.html">GeoPoint</a>, end: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">src/services/maps-manager.ts:220</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>coordinates</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/typealiases.html#GeoPoint" target="_self" >GeoPoint</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>end</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>false</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getBrowserLocation"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            getBrowserLocation
+                            </b>
+                            <a href="#getBrowserLocation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getBrowserLocation()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/services/maps-manager.ts:156</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;Coordinates | literal type&gt;</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getDirections"></a>
+                        <span class="name">
+                            <b>
+                            getDirections
+                            </b>
+                            <a href="#getDirections"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getDirections(origin: <a href="../undefineds/GeoPoint.html">GeoPoint</a>, destination: <a href="../undefineds/GeoPoint.html">GeoPoint</a>, intermediatePoints: <a href="../undefineds/GeoPoint.html">GeoPoint[]</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/services/maps-manager.ts:56</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>origin</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/typealiases.html#GeoPoint" target="_self" >GeoPoint</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>destination</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/typealiases.html#GeoPoint" target="_self" >GeoPoint</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>intermediatePoints</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/typealiases.html#GeoPoint" target="_self" >GeoPoint[]</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>[]</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;H.service.ServiceResult&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getMap"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            getMap
+                            </b>
+                            <a href="#getMap"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getMap(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/services/maps-manager.ts:137</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>name</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;H.Map&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onApiLoad"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            onApiLoad
+                            </b>
+                            <a href="#onApiLoad"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>onApiLoad()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/services/maps-manager.ts:40</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;H.service.Platform&gt;</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="removeMap"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            removeMap
+                            </b>
+                            <a href="#removeMap"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>removeMap(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">src/services/maps-manager.ts:145</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>name</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_browserLocationPromise"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _browserLocationPromise
+                            </b>
+                            <a href="#_browserLocationPromise"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>_browserLocationPromise:     <code>Promise&lt;literal type&gt;</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Promise&lt;literal type&gt;</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/services/maps-manager.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_defaultLayers"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _defaultLayers
+                            </b>
+                            <a href="#_defaultLayers"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>_defaultLayers:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/services/maps-manager.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_maps"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _maps
+                            </b>
+                            <a href="#_maps"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>_maps:     <code>Map&lt;string | H.Map&gt;</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Map&lt;string | H.Map&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Map&lt;string, H.Map&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/services/maps-manager.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { LazyMapsApiLoader } from &#x27;../loaders/lazy-maps-api-loader&#x27;;
+import { MarkerOptions } from &#x27;../interface/marker-options&#x27;;
+import { LatLng, LatLon, GeoPoint } from &#x27;../interface/lat-lng&#x27;;
+import { IControlOptions } from &#x27;../interface/control-options.interface&#x27;;
+import { BubbleOptions } from &#x27;../interface/bubble-options&#x27;;
+
+const DefaultCoords: { latitude: number; longitude: number } &#x3D; {
+  latitude: 40.73061,
+  longitude: -73.935242
+};
+
+function noop() {
+  // noop
+}
+
+/**
+ * Service responsible to execute arbitrary functions in specific google map context
+ */
+@Injectable()
+export class HereMapsManager {
+  private _maps: Map&lt;string, H.Map&gt; &#x3D; new Map&lt;string, H.Map&gt;();
+  private _browserLocationPromise: Promise&lt;{
+    latitude: number;
+    longitude: number;
+  }&gt;;
+
+  private _defaultLayers: any;
+
+  constructor(private loader: LazyMapsApiLoader) {
+    // check browser location
+    this.getBrowserLocation().then(noop);
+    // preload map immediately
+    this.loader.load().then(noop);
+  }
+
+  public onApiLoad(): Promise&lt;H.service.Platform&gt; {
+    return this.loader.platformReady;
+  }
+
+  public createMarker(options: MarkerOptions): Promise&lt;H.map.Marker&gt; {
+    return this.loader.platformReady.then(() &#x3D;&gt; {
+      return new H.map.Marker(options.position as LatLng);
+    });
+  }
+
+  public createBubble(options: BubbleOptions): Promise&lt;H.ui.InfoBubble&gt; {
+    return this.loader.platformReady.then(() &#x3D;&gt; {
+      return new H.ui.InfoBubble(options.position as LatLng);
+    });
+  }
+
+  getDirections(
+    origin: GeoPoint,
+    destination: GeoPoint,
+    intermediatePoints: GeoPoint[] &#x3D; []
+  ): Promise&lt;H.service.ServiceResult&gt; {
+    return this.loader.platformReady.then(platform &#x3D;&gt; {
+      const router &#x3D; platform.getRoutingService();
+      return new Promise&lt;H.service.ServiceResult&gt;((resolve, reject) &#x3D;&gt; {
+        const params: H.service.ServiceParameters &#x3D; {
+          mode: &#x27;balanced;truck&#x27;,
+          representation: &#x27;navigation&#x27;
+        };
+
+        const waypoints &#x3D; [origin, ...intermediatePoints, destination];
+        waypoints.forEach(
+          (waypoint, index) &#x3D;&gt;
+            (params[&#x60;waypoint${index}&#x60;] &#x3D; this.generateWaypointParam(
+              waypoint,
+              index &#x3D;&#x3D;&#x3D; 0 || index &#x3D;&#x3D;&#x3D; waypoints.length - 1
+            ))
+        );
+
+        router.calculateRoute(
+          params,
+          (result: H.service.ServiceResult) &#x3D;&gt; resolve(result),
+          (error: Error) &#x3D;&gt; {
+            console.error({
+              message: &#x27;fail to get directions&#x27;,
+              error
+            });
+            reject(error);
+          }
+        );
+      });
+    });
+  }
+
+  public createMap(
+    el: HTMLElement,
+    options?: H.Map.Options,
+    controls?: IControlOptions
+  ): Promise&lt;{ map: H.Map; ui: H.ui.UI; platform: H.service.Platform }&gt; {
+    return this.loader.platformReady.then(platform &#x3D;&gt; {
+      const defaultLayers &#x3D;
+        this._defaultLayers || platform.createDefaultLayers();
+      this._defaultLayers &#x3D; defaultLayers;
+      const map &#x3D; new H.Map(el, defaultLayers.normal.map, options);
+      const ui &#x3D; H.ui.UI.createDefault(map, defaultLayers, &#x27;en-US&#x27;);
+      ui.setUnitSystem(H.ui.UnitSystem.IMPERIAL);
+
+      const mapEvents &#x3D; new H.mapevents.MapEvents(map);
+      const behavior &#x3D; new H.mapevents.Behavior(mapEvents);
+
+      if (controls) {
+        if (!controls.mapTypeControl) {
+          ui.removeControl(&#x27;mapsettings&#x27;);
+        }
+        if (!controls.zoomControl) {
+          ui.removeControl(&#x27;zoom&#x27;);
+        }
+        if (!controls.scaleControl) {
+          ui.removeControl(&#x27;scalebar&#x27;);
+        }
+        if (!controls.streetViewControl &amp;&amp; (H as any).PanoramaView) {
+          ui.removeControl(&#x27;panorama&#x27;);
+        }
+        if (!controls.scrollwheel) {
+          behavior.disable(H.mapevents.Behavior.WHEELZOOM);
+        }
+        if (!controls.enableDoubleClickZoom) {
+          behavior.disable(H.mapevents.Behavior.DBLTAPZOOM);
+        }
+        if (!controls.draggable) {
+          behavior.disable(H.mapevents.Behavior.DRAGGING);
+        }
+      }
+
+      return { map, ui, platform };
+    });
+  }
+
+  public getMap(name: string): Promise&lt;H.Map&gt; {
+    return this.loader.load().then(() &#x3D;&gt; this._maps.get(name) as H.Map);
+  }
+
+  public addMap(name: string, map: H.Map): void {
+    this._maps.set(name, map);
+  }
+
+  public removeMap(name: string): boolean {
+    return this._maps.delete(name);
+  }
+
+  // createAutocomplete(input: ElementRef,
+  //     options: google.maps.places.AutocompleteOptions): Promise&lt;google.maps.places.Autocomplete&gt; {
+  //     return this.loader.load().then(() &#x3D;&gt; {
+  //         return new google.maps.places.Autocomplete(input.nativeElement, options);
+  //     });
+  // }
+
+  public getBrowserLocation(): Promise&lt;
+    Coordinates | { longitude: number; latitude: number }
+  &gt; {
+    if (this._browserLocationPromise) {
+      return this._browserLocationPromise;
+    }
+
+    return (this._browserLocationPromise &#x3D; new Promise&lt;{
+      latitude: number;
+      longitude: number;
+    }&gt;(resolve &#x3D;&gt; {
+      if (location.protocol &#x3D;&#x3D;&#x3D; &#x27;https&#x27; &amp;&amp; navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (success: { coords: Coordinates; timestamp: number }) &#x3D;&gt; {
+            resolve(success.coords);
+          },
+          error &#x3D;&gt; {
+            console.error(error);
+            if (error.code !&#x3D;&#x3D; 1) {
+              console.warn(
+                &#x60;Permission is accepted but error encounter with message: ${
+                  error.message
+                }&#x60;
+              );
+            }
+            // if user didn&#x27;t answer return default
+            resolve(DefaultCoords);
+          }
+        );
+      } else {
+        // if browser do not support location API return default (NYC)
+        resolve(DefaultCoords);
+      }
+    }));
+  }
+
+  public calculateMapBounds(
+    points: Array&lt;LatLng | Coordinates | H.map.AbstractMarker&gt; &#x3D; []
+  ): Promise&lt;H.geo.Rect&gt; {
+    return this.loader.platformReady.then(_ &#x3D;&gt; {
+      const bounds &#x3D; new H.map.Group().getBounds();
+      if (points &amp;&amp; points.length &gt; 1) {
+        points.forEach(m &#x3D;&gt; {
+          if (m instanceof H.map.AbstractMarker) {
+            bounds.mergePoint(m.getPosition());
+          } else {
+            bounds.mergePoint({
+              lat:
+                (m as Coordinates).latitude !&#x3D;&#x3D; void 0
+                  ? (m as Coordinates).latitude
+                  : (m as LatLng).lat,
+              lng:
+                (m as Coordinates).longitude !&#x3D;&#x3D; void 0
+                  ? (m as Coordinates).longitude
+                  : (m as LatLng).lng
+            });
+          }
+        });
+        return Promise.resolve(bounds);
+      }
+      return Promise.resolve(bounds);
+    });
+  }
+
+  private generateWaypointParam(coordinates: GeoPoint, end &#x3D; false): string {
+    const lat &#x3D;
+      (coordinates as LatLng).lat || (coordinates as Coordinates).latitude || 0;
+    const lng &#x3D;
+      (coordinates as LatLng).lng ||
+      (coordinates as Coordinates).longitude ||
+      (coordinates as LatLon).lon ||
+      0;
+    return &#x60;geo!${end ? &#x27;stopOver&#x27; : &#x27;passThrough&#x27;}!${lat},${lng}&#x60;;
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'HereMapsManager.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

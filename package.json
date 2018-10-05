@@ -1,6 +1,6 @@
 {
     "name": "ng2-heremaps",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Here Maps for Angular 6",
     "main": "./dist/bundle/ng2-heremaps.udm.js",
     "module": "./fesm5/ng2-heremaps.js",
@@ -21,7 +21,7 @@
         "pack:lib": "npm run build && npm pack ./dist",
         "publish:lib": "npm run build && npm publish ./dist",
         "publish:lib:next": "npm run build && npm publish --tag next ./dist",
-        "compodoc": "compodoc -p tsconfig.json",
+        "compodoc": "compodoc -p tsconfig.json -n 'Angular Heremaps' -d ./docs",
         "compodoc:serve": "compodoc -s"
     },
     "author": {
