@@ -1,4 +1,5 @@
 ## Angular Heremaps
+[![Build Status](https://travis-ci.org/mjaric/ng2-heremaps.svg?branch=master)](https://travis-ci.org/mjaric/ng2-heremaps)
 
 Allows you to interact with the HERE Maps API for JavaScript through Angular.
 
