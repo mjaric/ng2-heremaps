@@ -21,6 +21,11 @@ import { IControlOptions } from '../interface/control-options.interface';
 import { toLatLng } from '../utils/position';
 import { Subscription } from 'rxjs';
 
+/**
+ * @description
+ * Component that should render and initialize map instance.
+ * Use it to define point in html document where map should be rendered
+ */
 @Component({
   selector: 'heremap',
   template: `
@@ -174,9 +179,15 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
   @Input()
   public zoomControl = true;
 
+  /**
+   * Notifies subscribers that map is updated
+   */
   @Output()
   update = new EventEmitter<H.Map>();
 
+  /**
+   * Fires when user interacts with map by clicking on it
+   */
   @Output()
   clickMap = new EventEmitter<H.mapevents.Event>();
 
@@ -200,6 +211,9 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
     this._map = new Promise(resolve => (this._mapResolver = resolve));
   }
 
+  /**
+   * When resolved, returns Heremap instance
+   */
   getMap(): Promise<H.Map> {
     return this._map;
   }
@@ -243,6 +257,10 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
     return this._name ? this._name : `fh.here-maps-${this._id}`;
   }
 
+  /**
+   * Fits map to given bounds
+   * @param bounds
+   */
   public fitBounds(bounds: H.geo.Rect) {
     this.resetMapBounds(bounds);
   }

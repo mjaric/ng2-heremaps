@@ -16,6 +16,10 @@ import { GeoPoint } from '../interface/lat-lng';
 import { toLatLng } from '../utils/position';
 import { MapComponent } from './map';
 
+/**
+ * Holds instance of the heremap marker. Please note that directive must be placed inside
+ * map component, otherwise it will never be rendered.
+ */
 @Directive({
   selector: 'map-marker',
   providers: [

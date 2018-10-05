@@ -20,6 +20,10 @@ export type DirectionsResolver = (
   destination: LatLng
 ) => Promise<LatLng[]>;
 
+/**
+ * Renders directions on heremap. Please note that directive must be placed inside
+ * map component, otherwise it will never be rendered.
+ */
 @Directive({
   selector: 'map-directions',
   providers: [

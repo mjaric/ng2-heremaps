@@ -8,6 +8,10 @@ import {PolylineOptions} from '../interface/polyline-options';
 import { MapComponent } from './map';
 
 
+/**
+ * Directive that will render plyline to map. Please note that directive must be placed inside
+ * map component, otherwise it will never render polyline.
+ */
 @Directive({
     selector: 'map-polyline',
     providers: [{provide: BaseMapComponent, useExisting: forwardRef(() => MapPolylineDirective)}]
@@ -20,6 +24,9 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
     private _strokeColor: string;
     private _lineWidth = 4;
 
+    /**
+     * Fill color that should be used when polyline is rendered on map
+     */
     get fillColor(): string {
         return this._fillColor;
     }
@@ -36,6 +43,9 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
         }
     }
 
+    /**
+     * Stroke color that should be used when polyline is rendered on map
+     */
     get strokeColor(): string {
         return this._strokeColor;
     }
@@ -52,6 +62,9 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
         }
     }
 
+    /**
+     * Gives plyline with
+     */
     get lineWidth(): number {
         return this._lineWidth;
     }
@@ -101,10 +114,18 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
             });
     }
 
+    /**
+     * Checks if map is set to directive
+     */
     public hasMapComponent(): boolean {
         return !!this.mapComponent;
     }
 
+    /**
+     * Sets heremap to polyline. This is called by map component so you don't need to call it manually.
+     * @param component map component
+     * @param map here map instance
+     */
     public setMapComponent(component: MapComponent, map: H.Map): void {
         this.mapComponent = component;
         this.proxy
@@ -128,15 +149,4 @@ export class MapPolylineDirective extends BaseMapComponent<H.map.Polyline> imple
                     });
             });
     }
-
-    // private createFrom<T>(source: any, keys: string[]): T {
-    //     return Object
-    //         .keys(source)
-    //         .reduce((acc: T, next: string) => {
-    //             if (source[next] !== undefined) {
-    //                 acc[next] = source[next];
-    //             }
-    //             return acc;
-    //         }, <T>{});
-    // }
 }
