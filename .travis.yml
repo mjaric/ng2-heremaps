@@ -1,14 +1,15 @@
 dist: trusty
 language: node_js
 node_js:
-  - '9'
+  - 9.5.0
 cache:
   directories:
   - node_modules
 install:
   - npm install
 script:
-  - npm build
+  - npm run build
+  - npm run pack:lib
 deploy:
   provider: npm
   email: milan.jaric@gmail.com
