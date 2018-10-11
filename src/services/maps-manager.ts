@@ -30,11 +30,13 @@ export class HereMapsManager {
 
   private _defaultLayers: any;
 
+  private _loadPromise: Promise<H.Map>;
+
   constructor(private loader: LazyMapsApiLoader) {
     // check browser location
     this.getBrowserLocation().then(noop);
     // preload map immediately
-    this.loader.load().then(noop);
+    this._loadPromise = this.loader.load();
   }
 
   public onApiLoad(): Promise<H.service.Platform> {
@@ -134,8 +136,8 @@ export class HereMapsManager {
     });
   }
 
-  public getMap(name: string): Promise<H.Map> {
-    return this.loader.load().then(() => this._maps.get(name) as H.Map);
+  public getMap(name: string): Promise<H.Map | undefined> {
+    return this._loadPromise.then(() => this._maps.get(name));
   }
 
   public addMap(name: string, map: H.Map): void {
