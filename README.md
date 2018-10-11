@@ -47,28 +47,25 @@ class AppModule {}
 
 #### Inputs
 
-
 | Input                  | Type                           | Default           | Description                                                                 |
 | ---------------------- | ------------------------------ | ----------------- | --------------------------------------------------------------------------- |
-| autoFitMarkers         | boolean                        | true              | Should map auto resize bounds to current set of markers                     |
-| backgroundColor        | string                         |                   | This color will be visible when tiles have not yet loaded as the user pans. |
-| center                 | LatLng or                      | **REQUIRED**      | The initial Map center.                                                     |
-|                        |  { latitude: number,           |                   |                                                                             |
-|                        |  longitude: number }           |                   |                                                                             |
-| enableDoubleClickZoom  | boolean                        | true              | Enables/disables zoom and center on double click.                           |
-| draggable              | boolean                        | true              | If false, prevents the map from being dragged.                              |
-| keyboardShortcuts      | boolean                        | true              | If false, prevents the map from being controlled by the keyboard.           |
-| scrollwheel            | boolean                        | true              | If false, disables scrollwheel zooming on the map.                          |
-| zoom                   | number                         | 5                 | Map zoom level                                                              |
-| minZoom                | number                         |                   | The minimum zoom level which will be displayed on the map.                  |
-| maxZoom                | number                         |                   | The maximum zoom level which will be displayed on the map.                  |
-| disableDefaultUI       | boolean                        | false             | Enables/disables all default UI.                                            |
-| mapTypeControl         | boolean                        | false             | Enabled/Disabled state of the Map type control.                             |
-| rotateControl          | boolean                        | false             | Enabled/Disabled state of the Rotate control.                               |
-| scaleControl           | boolean                        | true              | Enabled/Disabled state of the Scale control.                                |
-| streetViewControl      | boolean                        | false             | Enabled/Disabled state of the Street View Pegman control.                   |
-| animateZoom            | boolean                        | true              | Enabled/Disabled zoom animation.                                            |
-| zoomControl            | boolean                        | true              | Enabled/Disabled state of the Zoom control.                                 |
+| `autoFitMarkers`         | `boolean`                    | true              | Should map auto resize bounds to current set of markers                     |
+| `backgroundColor`        | `string`                     | transparent       | This color will be visible when tiles have not yet loaded as the user pans. |
+| `center`                 | `LatLng` or `Location`       | **REQUIRED**      | The initial Map center.                                                     |
+| `enableDoubleClickZoom`  | `boolean`                    | true              | Enables/disables zoom and center on double click.                           |
+| `draggable`              | `boolean`                    | true              | If false, prevents the map from being dragged.                              |
+| `keyboardShortcuts`      | `boolean`                    | true              | If false, prevents the map from being controlled by the keyboard.           |
+| `scrollwheel`            | `boolean`                    | true              | If false, disables scrollwheel zooming on the map.                          |
+| `zoom`                   | `number`                     | 5                 | Map zoom level                                                              |
+| `minZoom`                | `number`                     | null              | The minimum zoom level which will be displayed on the map.                  |
+| `maxZoom`                | `number`                     | null              | The maximum zoom level which will be displayed on the map.                  |
+| `disableDefaultUI`       | `boolean`                    | false             | Enables/disables all default UI.                                            |
+| `mapTypeControl`         | `boolean`                    | false             | Enabled/Disabled state of the Map type control.                             |
+| `rotateControl`          | `boolean`                    | false             | Enabled/Disabled state of the Rotate control.                               |
+| `scaleControl`           | `boolean`                    | true              | Enabled/Disabled state of the Scale control.                                |
+| `streetViewControl`      | `boolean`                    | false             | Enabled/Disabled state of the Street View Pegman control.                   |
+| `animateZoom`            | `boolean`                    | true              | Enabled/Disabled zoom animation.                                            |
+| `zoomControl`            | `boolean`                    | true              | Enabled/Disabled state of the Zoom control.                                 |
 
 ### Directives
 There are directives for directions, markers, and polylines. Please see the files directly to see the available inputs and outputs.
