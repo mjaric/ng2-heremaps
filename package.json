@@ -1,6 +1,6 @@
 {
     "name": "ng2-heremaps",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "description": "Here Maps for Angular 6",
     "main": "./dist/bundle/ng2-heremaps.udm.js",
     "module": "./fesm5/ng2-heremaps.js",

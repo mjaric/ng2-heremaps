@@ -117,8 +117,8 @@ export class LazyMapsApiLoader extends BaseMapsApiLoader {
     script.src = this.createModuleUrl(moduleName, 'js');
     script.async = true;
     script.defer = true;
-    script.onerror = onError;
-    script.onload = onLoad;
+    script.addEventListener("error", onError);
+    script.addEventListener("load", onLoad);
 
     return script;
   }
