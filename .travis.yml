@@ -10,14 +10,14 @@ install:
 script:
   - npm run build
   - npm run pack:lib
-deploy:
-  - provider: npm
-    email: milan.jaric@gmail.com
-    api_key:
-      secure: Mt2c55a18SKfEVwPG8gpm4gpPNWUUlO7/3BGwV11ZNQm5sbZsK8FNb36x3ncnsNug30fWpH8JZrWKfShVCcxxRCYEmAd7mHyPfNOUob9RcfptKeKtOFwxFXsrCBujOMfqfLCotOkjPoOaVcioOWqXe2qDZQ4LLrGhcPlSbK4JKbW9xGjS4K9DS9DkV+AyWkM4w+4BIDgDYSTiHBwjTi9uBv+FBNf243lUFJ5RN0mMeN1M5KUigDFNBqPFMTpip5mevlqsvUq7mkixkgDsyVvjGYdWGznhhe6ilyuAangB9sa0SrxGm5o/RATtaBEMOe/bIDPBD21x5LczNq+bwgoxGlvksC7EM7L6D9mAADzkIB6B+pG2F1wWv9IHXqPirjVbpbsNLcHb2AMqq6dO3PPqaVAAtgnrtx9bZ7c7dQOavPwFL1e2O6l3mLqwYzkgP8G2bMLXz+KLqbsvDYmjefKhiRkjQ8rfNz35oxVXjJlQ8inOubbLh+A1QMxSfh8c0M52iAQviLiCu2JTseQ8zoxhvrp4jkrbN5Y/JC1jQjHr0+rihcXxeL3TKwOOc4LDIBatl3y2iy5mfatcxL5ofg+vqM20QOqyw/kGTFvRclNtWumuKYKET+oRUAqmUysypkkS1NwyFdLpTFCvC97ifdPXRbtg7DqL6ljbrebo1xWkok=
-    on:
-      tags: true
-      repo: mjaric/ng2-heremaps
+# deploy:
+#   - provider: npm
+#     email: milan.jaric@gmail.com
+#     api_key:
+#       secure: Mt2c55a18SKfEVwPG8gpm4gpPNWUUlO7/3BGwV11ZNQm5sbZsK8FNb36x3ncnsNug30fWpH8JZrWKfShVCcxxRCYEmAd7mHyPfNOUob9RcfptKeKtOFwxFXsrCBujOMfqfLCotOkjPoOaVcioOWqXe2qDZQ4LLrGhcPlSbK4JKbW9xGjS4K9DS9DkV+AyWkM4w+4BIDgDYSTiHBwjTi9uBv+FBNf243lUFJ5RN0mMeN1M5KUigDFNBqPFMTpip5mevlqsvUq7mkixkgDsyVvjGYdWGznhhe6ilyuAangB9sa0SrxGm5o/RATtaBEMOe/bIDPBD21x5LczNq+bwgoxGlvksC7EM7L6D9mAADzkIB6B+pG2F1wWv9IHXqPirjVbpbsNLcHb2AMqq6dO3PPqaVAAtgnrtx9bZ7c7dQOavPwFL1e2O6l3mLqwYzkgP8G2bMLXz+KLqbsvDYmjefKhiRkjQ8rfNz35oxVXjJlQ8inOubbLh+A1QMxSfh8c0M52iAQviLiCu2JTseQ8zoxhvrp4jkrbN5Y/JC1jQjHr0+rihcXxeL3TKwOOc4LDIBatl3y2iy5mfatcxL5ofg+vqM20QOqyw/kGTFvRclNtWumuKYKET+oRUAqmUysypkkS1NwyFdLpTFCvC97ifdPXRbtg7DqL6ljbrebo1xWkok=
+#     on:
+#       tags: true
+#       repo: mjaric/ng2-heremaps
   # - provider: pages
   #   skip-cleanup: true
   #   github-token: $GITHUB_TOKEN
