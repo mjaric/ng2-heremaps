@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -1096,7 +1093,7 @@ If this option is set to true, the viewport is left unchanged, unless the map&#3
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>route(value: )</code></span>
+                        <span class="accessor"><b>set</b><code>route(value)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1161,7 +1158,7 @@ If this option is set to true, the viewport is left unchanged, unless the map&#3
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>origin(value: )</code></span>
+                        <span class="accessor"><b>set</b><code>origin(value)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1233,7 +1230,7 @@ If this option is set to true, the viewport is left unchanged, unless the map&#3
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>destination(value: )</code></span>
+                        <span class="accessor"><b>set</b><code>destination(value)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1871,7 +1868,9 @@ export class MapDirectionsDirective extends BaseMapComponent&lt;H.map.Polyline&g
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
