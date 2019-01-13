@@ -11,7 +11,7 @@ export {IZoomLevel};
 import {IAnimation} from './services/zoom-level.type';
 import {GeoPoint} from './interface/lat-lng';
 
-export {IAnimation}
+export {IAnimation};
 /**
  * The following list shows the approximate level of detail
  * you can expect to see at each zoom level

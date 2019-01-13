@@ -72,13 +72,20 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
    */
   @Input()
   set center(value: GeoPoint) {
+    if (!value) {
+      return;
+    }
+    
+    const mapCenter = toLatLng(value);
+
     this._map.then(map => {
-      if (value) {
-        map.setCenter(toLatLng(value));
+        if (mapCenter.lat && mapCenter.lng) {
+          map.setCenter(toLatLng(value));
       }
     });
-
-    this._center = toLatLng(value);
+    
+    if (mapCenter.lat && mapCenter.lng)
+      this._center = toLatLng(value);
   }
   get center() {
     return this._center;
