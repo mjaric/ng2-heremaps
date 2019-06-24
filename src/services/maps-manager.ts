@@ -132,7 +132,7 @@ export class HereMapsManager {
         }
       }
 
-      return { map, ui, platform };
+      return { map, ui, platform, mapEvents, behavior };
     });
   }
 
