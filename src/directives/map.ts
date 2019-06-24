@@ -43,6 +43,12 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
   public readonly ui = new Promise<H.ui.UI>(
     resolve => (this._uiResolver = resolve)
   );
+  public readonly mapEvents = new Promise<H.mapevents.MapEvents>(
+    resolve => (this._mapEventsResolver = resolve)
+  );
+  public readonly behavior = new Promise<H.mapevents.Behavior>(
+    resolve => (this._behaviorResolver = resolve)
+  );
 
   /**
    * Should map auto resize bounds to current set of markers
@@ -198,6 +204,8 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
   clickMap = new EventEmitter<H.mapevents.Event>();
 
   protected _uiResolver: (ui: H.ui.UI) => void;
+  protected _mapEventsResolver: (mapEvents: H.mapevents.MapEvents) => void;
+  protected _behaviorResolver: (behavior: H.mapevents.Behavior) => void;
 
   private _id: number;
   private _map: Promise<H.Map>;
@@ -236,10 +244,12 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
         this.getOptions(),
         this.getControlOptions()
       )
-      .then(({ map: map, ui: ui, platform: platform }) => {
+      .then(({ map: map, ui: ui, platform: platform, mapEvents: mapEvents, behavior: behavior }) => {
         this._mapsManager.addMap(this.toString(), map);
         this._uiResolver(ui);
         this._mapResolver(map);
+        this._mapEventsResolver(mapEvents);
+        this._behaviorResolver(behavior);
         this.attachEvents(map);
       });
   }

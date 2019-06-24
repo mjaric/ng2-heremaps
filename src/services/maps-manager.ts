@@ -96,7 +96,7 @@ export class HereMapsManager {
     el: HTMLElement,
     options?: H.Map.Options,
     controls?: IControlOptions
-  ): Promise<{ map: H.Map; ui: H.ui.UI; platform: H.service.Platform }> {
+  ): Promise<{ map: H.Map; ui: H.ui.UI; platform: H.service.Platform; mapEvents: H.mapevents.MapEvents; behavior: H.mapevents.Behavior }> {
     return this.loader.platformReady.then(platform => {
       const defaultLayers =
         this._defaultLayers || platform.createDefaultLayers();
