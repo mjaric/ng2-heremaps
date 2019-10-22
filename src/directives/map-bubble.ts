@@ -37,6 +37,12 @@ export class MapBubbleDirective extends BaseMapComponent<H.ui.InfoBubble> {
   @Output()
   click: EventEmitter<any> = new EventEmitter<any>();
 
+  /**
+   * This event is fired when the state of the bubble changes.
+   */
+  @Output()
+  stateChange: EventEmitter<any> = new EventEmitter<any>();
+
   /*
      * Inputs options
      * **********************************************************
@@ -70,6 +76,17 @@ export class MapBubbleDirective extends BaseMapComponent<H.ui.InfoBubble> {
   }
 
   /**
+   * If true, the bubble is closed.
+   * Default value is false and nothing is done if not true.
+   */
+  @Input()
+  set closed(mode: boolean) {
+    if (mode) {
+      this.proxy.then(bubble => bubble.close());
+    }
+  }
+
+  /**
    * Rollover text
    */
   @Input()
@@ -97,6 +114,8 @@ export class MapBubbleDirective extends BaseMapComponent<H.ui.InfoBubble> {
       setTimeout(() => {
         if (mapObject instanceof H.ui.InfoBubble) {
           ui.addBubble(mapObject);
+
+          mapObject.addEventListener('statechange', ev => this.stateChange.emit(ev));
         }
       }, this.delay || 0)
     );
