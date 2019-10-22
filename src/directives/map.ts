@@ -10,7 +10,8 @@ import {
   Attribute,
   ContentChildren,
   Output,
-  EventEmitter
+  EventEmitter,
+  HostListener
 } from '@angular/core';
 
 import { HereMapsManager } from '../services/maps-manager';
@@ -81,7 +82,7 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
     if (!value) {
       return;
     }
-    
+
     const mapCenter = toLatLng(value);
 
     this._map.then(map => {
@@ -89,7 +90,7 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
           map.setCenter(toLatLng(value));
       }
     });
-    
+
     if (mapCenter.lat && mapCenter.lng)
       this._center = toLatLng(value);
   }
@@ -267,6 +268,12 @@ export class MapComponent implements OnDestroy, OnInit, AfterContentInit {
     );
 
     this.attachComponentsToMap();
+  }
+
+  @HostListener('window:resize')
+  async resize() {
+    const map = await this._map;
+    map.getViewPort().resize();
   }
 
   toString(): string {
