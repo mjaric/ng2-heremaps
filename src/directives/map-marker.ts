@@ -3,17 +3,16 @@
  */
 import {
   Directive,
-  Input,
-  Output,
   EventEmitter,
   forwardRef,
-  OnDestroy
+  Input,
+  OnDestroy,
+  Output
 } from '@angular/core';
-
-import { HereMapsManager } from '../services/maps-manager';
-import { BaseMapComponent } from './base-map-component';
 import { GeoPoint } from '../interface/lat-lng';
+import { HereMapsManager } from '../services/maps-manager';
 import { toLatLng } from '../utils/position';
+import { BaseMapComponent } from './base-map-component';
 import { MapComponent } from './map';
 
 /**
@@ -29,7 +28,8 @@ import { MapComponent } from './map';
     }
   ]
 })
-export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements OnDestroy {
+export class MapMakerDirective extends BaseMapComponent<H.map.Marker>
+  implements OnDestroy {
   /*
    * Outputs events
    * **********************************************************
@@ -46,6 +46,18 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements
    */
   @Output()
   dblclick: EventEmitter<any> = new EventEmitter<any>();
+
+  /**
+   * This event is fired when the marker is dragged.
+   */
+  @Output()
+  drag: EventEmitter<any> = new EventEmitter<any>();
+
+  /**
+   * This event is fired when the marker is done being dragged.
+   */
+  @Output()
+  dragEnd: EventEmitter<any> = new EventEmitter<any>();
 
   /**
    * This event is fired for a rightclick on the marker.
@@ -111,6 +123,15 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements
   }
 
   /**
+   * If true, the marker receives mouse and touch events.
+   * Default value is true.
+   */
+  @Input()
+  set draggable(mode: boolean) {
+    this._draggable = mode;
+  }
+
+  /**
    * Icon for the foreground. If a string is provided,
    * it is treated as though it were an Icon with the string as url.
    */
@@ -170,8 +191,10 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements
   }
 
   protected mapComponent: MapComponent;
+  private marker: H.map.Marker;
 
   private _clickable = true;
+  private _draggable = false;
 
   constructor(private _mapsManager: HereMapsManager) {
     super();
@@ -188,7 +211,6 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements
     });
   }
 
-
   public hasMapComponent(): boolean {
     return !!this.mapComponent;
   }
@@ -199,19 +221,27 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements
     ui: H.ui.UI
   ): void {
     this.mapComponent = component;
-    this.proxy.then((mapObject: H.map.Marker) =>
+    this.proxy.then((marker: H.map.Marker) => {
+      this.marker = marker;
+      this.marker.draggable = true;
+
       setTimeout(() => {
-        if (mapObject instanceof H.map.Object) {
-          map.addObject(mapObject);
+        if (marker instanceof H.map.Object) {
+          map.addObject(marker);
+          if (this._draggable) {
+            this.addDraggable(marker);
+          } else {
+            this.removeDraggable(marker);
+          }
         }
-      }, this.delay || 0)
-    );
+      }, this.delay || 0);
+    });
   }
 
   /*
-     * Internal logic
-     * **********************************************************
-     */
+   * Internal logic
+   * **********************************************************
+   */
 
   private bindEvents(marker: H.map.Marker) {
     marker.addEventListener('tap', e => {
@@ -230,5 +260,77 @@ export class MapMakerDirective extends BaseMapComponent<H.map.Marker> implements
     marker.addEventListener('visibilitychange', e =>
       this.visible_changed.emit(e)
     );
+  }
+
+  private async addDraggable(marker: H.map.Marker) {
+    const map = await this.getMap();
+
+    // disable the default draggability of the underlying map
+    // when starting to drag a marker object:
+    map.addEventListener(
+      'dragstart',
+      this.dragstartAddDraggable.bind(this),
+      false
+    );
+
+    // re-enable the default draggability of the underlying map
+    // when dragging has completed
+    map.addEventListener('dragend', this.dragendAddDraggable.bind(this), false);
+
+    // Listen to the drag event and move the position of the marker
+    // as necessary
+    map.addEventListener('drag', this.dragAddDraggable.bind(this), false);
+  }
+
+  private async removeDraggable(marker: H.map.Marker) {
+    const map = await this.getMap();
+  }
+
+  private getMap(): Promise<any> {
+    return this.mapComponent.getMap();
+  }
+
+  // Event handlers
+
+  // disable the default draggability of the underlying map
+  // when starting to drag a marker object:
+  private dragstartAddDraggable(ev: H.mapevents.Event) {
+    const target = ev.target;
+    if (target instanceof H.map.Marker) {
+      this.mapComponent.behavior.then(behavior => behavior.disable());
+    }
+  }
+
+  // re-enable the default draggability of the underlying map
+  // when dragging has completed
+  private dragendAddDraggable(ev: H.mapevents.Event) {
+    const target = ev.target;
+    if (target instanceof H.map.Marker) {
+      this.mapComponent.behavior.then(behavior => behavior.enable());
+      if (this.dragEnd && target === this.marker) {
+        this.dragEnd.emit(ev);
+      }
+    }
+  }
+
+  // Listen to the drag event and move the position of the marker
+  // as necessary
+  private dragAddDraggable(ev: H.mapevents.Event) {
+    const target = ev.target,
+      pointer = ev.currentPointer;
+    if (target instanceof H.map.Marker && target === this.marker) {
+      this.getMap().then(map => {
+        target.setPosition(
+          map.screenToGeo(
+            (pointer as any).viewportX,
+            (pointer as any).viewportY
+          )
+        );
+
+        if (this.drag) {
+          this.drag.emit(ev);
+        }
+      });
+    }
   }
 }
